@@ -1,0 +1,28 @@
+name: "Get Netlify deploy links"
+
+description: "Get Netlify deploy links"
+inputs:
+  github-token:
+    description: 'GitHub Token'
+    required: false
+    default: ${{ github.token }}
+  branch:
+    description: |
+      The name of the branch from which the pull request was opened. For cross-repository pull requests namespace the
+      branch with user or organization name, i.e. 'user:branch-name' or 'org:branch-name'.
+    required: false
+  perPage:
+    required: false
+    default: 10
+  state:
+    required: false
+    default: open
+  base:
+    description: 'The base branch name of the Pull Request'
+    required: false
+outputs:
+  pr:
+    description: The Pull Request's number
+runs:
+  using: "node16"
+  main: "dist/index.js"

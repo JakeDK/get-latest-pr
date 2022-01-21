@@ -1,0 +1,29 @@
+{
+  "name": "get-netlify-deploy-sites",
+  "version": "0.1.0",
+  "description": "Get Netlify deploy information",
+  "main": "dist/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "ncc build index.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JakeDK/get-netlify-deploy-sites"
+  },
+  "keywords": [
+    "actions",
+    "node"
+  ],
+  "author": "GitHub",
+  "license": "MIT",
+  "dependencies": {
+    "@actions/core": "^1.2.4",
+    "@actions/github": "^5.0.0",
+    "@octokit/core": "^3.5.1",
+    "@tsconfig/recommended": "^1.0.1"
+  },
+  "devDependencies": {
+    "@types/node": "^17.0.9"
+  }
+}
