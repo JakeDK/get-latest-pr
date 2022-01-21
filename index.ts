@@ -9,21 +9,25 @@ async function run(): Promise<void> {
     const base: any = core.getInput('base');
     const octokit = github.getOctokit(token);
     const context = github.context;
-
-    const response = await octokit.rest.pulls.list({
+    const query: any  = {
       owner: context.repo.owner,
       repo: context.repo.repo,
-      state: filterState,
-      per_page: perPage,
-      base
-    });
+      state: filterState
+    }
+
+    if (base) {
+      query.base = base;
+    }
+    if (perPage) {
+      query.per_page = perPage;
+    }
+
+    const response = await octokit.rest.pulls.list(query);
 
     if (!response.data) return;
 
-    console.log(response);
-    const pr = await response.data.filter(item => item.title.indexOf('Release v') !== -1)[0];
-    console.log(pr);
-    core.setOutput('pr', pr);
+    const pr = response.data.filter(item => item.title.indexOf('Release v') !== -1)[0]
+    core.setOutput('prLink', pr.html_url);
   } catch (error) {
     console.log(error);
   }

@@ -1,6 +1,6 @@
-name: "Get Netlify deploy links"
+name: "Get latest pull request"
 
-description: "Get Netlify deploy links"
+description: "Get latest pull request"
 inputs:
   github-token:
     description: 'GitHub Token'
@@ -20,8 +20,11 @@ inputs:
   base:
     description: 'The base branch name of the Pull Request'
     required: false
+  filter:
+    description: 'Find first pull request by title'
+    required: false
 outputs:
-  pr:
+  prLink:
     description: The Pull Request's number
 runs:
   using: "node16"
